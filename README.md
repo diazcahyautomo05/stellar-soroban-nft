@@ -1,36 +1,36 @@
 # Stellar Soroban NFT
 
-Smart contract NFT berbasis Soroban dan Stellar Testnet. Project ini dibuat untuk membuat, mengelola, dan menjalankan koleksi NFT secara on-chain menggunakan smart contract Rust di Soroban.
+Stellar Soroban NFT is a smart contract project built on Soroban and deployed to the Stellar Testnet. This project is designed to create, manage, and interact with an NFT collection directly on-chain using Rust smart contracts.
 
-## Fitur
+## Features
 
-- Initialize koleksi NFT
+- Initialize NFT collection
 - Mint NFT
 - Batch mint NFT
 - Transfer NFT
 - Burn NFT
-- Approval NFT
-- Approval operator
+- Approve NFT transfer
+- Set operator approval
 - Whitelist address
-- Batch whitelist
-- Pause dan unpause contract
-- Update URI NFT
+- Batch whitelist address
+- Pause and unpause contract
+- Update NFT URI
 - Update royalty
 - Update max supply
-- Cek owner NFT
-- Cek metadata NFT
-- Cek total supply
-- Cek total minted
-- Cek collection info
+- Check NFT owner
+- Check NFT metadata
+- Check total supply
+- Check total minted
+- Check collection information
 
-## Teknologi
+## Technologies
 
 - Rust
 - Soroban SDK
 - Stellar CLI
 - Stellar Testnet
 
-## Struktur Folder
+## Project Structure
 
 contracts/
 └── notes/
@@ -53,27 +53,27 @@ CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L
 
 ## Initialize Contract
 
-stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- initialize --admin diazcahya05 --collection_name "Stellar Apes" --collection_symbol "SAPE" --collection_desc "NFT Collection di Soroban Testnet" --max_supply 100 --royalty_bps 250 --royalty_receiver diazcahya05
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- initialize --admin diazcahya05 --collection_name "Stellar Apes" --collection_symbol "SAPE" --collection_desc "NFT Collection on Soroban Testnet" --max_supply 100 --royalty_bps 250 --royalty_receiver diazcahya05
 
-## Cek Collection Info
+## Check Collection Info
 
 stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- collection_info
 
 ## Mint NFT
 
-stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- mint --to diazcahya05 --name "Ape #1" --description "NFT pertama saya di Soroban" --uri "QmApe1"
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- mint --to diazcahya05 --name "Ape #1" --description "My first NFT on Soroban" --uri "QmApe1"
 
-## Cek NFT
+## Check NFT
 
 stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- get_nft --token_id 0
 
-## Cek Owner NFT
+## Check NFT Owner
 
 stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- owner_of --token_id 0
 
 ## Transfer NFT
 
-stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- transfer --from diazcahya05 --to ADDRESS_TUJUAN --token_id 0
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- transfer --from diazcahya05 --to DESTINATION_ADDRESS --token_id 0
 
 ## Burn NFT
 
@@ -87,17 +87,17 @@ stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP
 
 stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- total_minted
 
-## Aktifkan Whitelist
+## Enable Whitelist
 
 stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- toggle_whitelist --enabled true
 
-## Tambah Address ke Whitelist
+## Add Address to Whitelist
 
-stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- add_to_whitelist --address ADDRESS_WALLET
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- add_to_whitelist --address WALLET_ADDRESS
 
-## Cek Whitelist
+## Check Whitelist
 
-stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- is_whitelisted --address ADDRESS_WALLET
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- is_whitelisted --address WALLET_ADDRESS
 
 ## Pause Contract
 
@@ -115,10 +115,9 @@ stellar contract build
 
 stellar contract deploy --source-account diazcahya05
 
-## Link Contract
+## Contract Link
 
 https://lab.stellar.org/r/testnet/contract/CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L
-
 ## License
 
 MIT
