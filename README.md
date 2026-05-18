@@ -1,118 +1,124 @@
-# Stellar Notes DApp
+# Stellar Soroban NFT
 
-**Stellar Notes DApp** - Blockchain-Based Decentralized Note-Taking System
+Smart contract NFT berbasis Soroban dan Stellar Testnet. Project ini dibuat untuk membuat, mengelola, dan menjalankan koleksi NFT secara on-chain menggunakan smart contract Rust di Soroban.
 
-## Project Description
+## Fitur
 
-Stellar Notes DApp is a decentralized smart contract solution built on the Stellar blockchain using Soroban SDK. It provides a secure, immutable platform for managing personal notes directly on the blockchain. The contract ensures that your data is stored transparently and is only manageable through predefined smart contract functions, eliminating reliance on centralized database providers.
+- Initialize koleksi NFT
+- Mint NFT
+- Batch mint NFT
+- Transfer NFT
+- Burn NFT
+- Approval NFT
+- Approval operator
+- Whitelist address
+- Batch whitelist
+- Pause dan unpause contract
+- Update URI NFT
+- Update royalty
+- Update max supply
+- Cek owner NFT
+- Cek metadata NFT
+- Cek total supply
+- Cek total minted
+- Cek collection info
 
-The system allows users to create, view, and delete notes, leveraging the efficiency and security of the Stellar network. Each note is uniquely identified and stored within the contract's instance storage, ensuring data persistence and reliability.
+## Teknologi
 
-## Project Vision
-
-Our vision is to revolutionize personal productivity in the digital age by:
-
-- **Decentralizing Data**: Moving note-taking from centralized servers to a global, distributed blockchain
-- **Ensuring Ownership**: Empowering users to have complete control and ownership over their digital thoughts and information
-- **Guaranteeing Immutability**: Providing a permanent, tamper-proof record of notes that cannot be altered or deleted by third parties
-- **Enhancing Privacy**: Leveraging blockchain security to protect personal information from unauthorized access
-- **Building Trustless Systems**: Creating a platform where data integrity is guaranteed by code, not by company promises
-
-We envision a future where digital information is truly personal and sovereign, empowering individuals with complete autonomy over their digital assets.
-
-## Key Features
-
-### 1. **Simple Note Creation**
-
-- Create notes with just one function call
-- Specify title and content for each note
-- Automated ID generation for unique identification
-- Persistent storage on the Stellar blockchain
-
-### 2. **Efficient Data Retrieval**
-
-- Fetch all stored notes in a single call
-- Structured data representation for easy frontend integration
-- Quick access to your entire note collection
-- Real-time synchronization with the blockchain state
-
-### 3. **Secure Deletion**
-
-- Remove specific notes using their unique IDs
-- Permanent removal from the contract storage
-- Clean and efficient storage management
-- Immediate update of the note list after deletion
-
-### 4. **Transparency and Security**
-
-- View all note activities on the blockchain
-- Blockchain-based verification of all storage actions
-- Immutable records of note creation and deletion
-- Protected against unauthorized modifications
-
-### 5. **Stellar Network Integration**
-
-- Leverages the high speed and low cost of Stellar
-- Built using the modern Soroban Smart Contract SDK
-- Scalable architecture for growing note collections
-- Interoperable with other Stellar-based services
-
-## Contract Details
-
-- Contract Address: CBLU4IUASQ4WUMOXBFLZRSBBLILGOH33GS4LUPKFBCCCMJCDQNMF7G2M
-  (Screenshot has been removed)
-
-## Future Scope
-
-### Short-Term Enhancements
-
-1. **Note Encryption**: Support for end-to-end encryption of note content for enhanced privacy
-2. **Category Management**: Add tags and categories to organize notes efficiently
-3. **Rich Text Support**: Extend support beyond plain text to include Markdown and formatted content
-4. **Search Functionality**: Implement advanced search filters for large note collections
-
-### Medium-Term Development
-
-5. **Collaborative Notes**: Implement multi-signature requirements for shared or collaborative note-taking
-   - Shared access for multiple addresses
-   - Permission-based editing and viewing
-   - Version history tracking
-6. **Notification System**: Off-chain bridge to alert users of new updates or shared notes
-7. **Asset Attachment**: Capability to attach digital assets or tokens to specific notes
-8. **Inter-Contract Integration**: Allow other smart contracts to interact with and store data in the notes contract
-
-### Long-Term Vision
-
-9. **Cross-Chain Synchronization**: Extend note storage to multiple blockchain networks
-10. **Decentralized UI Hosting**: Host the frontend on IPFS or similar decentralized platforms
-11. **AI-Powered Summarization**: Optional integration with AI to help users summarize their notes
-12. **Privacy Layers**: Implement zero-knowledge proofs for completely private note content
-13. **DAO Governance**: Community-driven protocol improvements and feature prioritization
-14. **Identity Management**: Integration with decentralized identity (DID) systems for user management
-
-### Enterprise Features
-
-15. **Corporate Documentation**: Adapt the system for secure corporate record-keeping
-16. **Immutable Logging**: Create time-locked logs for audit purposes
-17. **Automated Reporting**: Automatic note triggers for periodic reporting
-18. **Multi-Language Support**: Expand accessibility with internationalization
-
----
-
-## Technical Requirements
-
+- Rust
 - Soroban SDK
-- Rust programming language
-- Stellar blockchain network
+- Stellar CLI
+- Stellar Testnet
 
-## Getting Started
+## Struktur Folder
 
-Deploy the smart contract to Stellar's Soroban network and interact with it using the three main functions:
+contracts/
+└── notes/
+    ├── Cargo.toml
+    └── src/
+        ├── lib.rs
+        └── test.rs
 
-- `create_note()` - Create a new note with a title and content
-- `get_notes()` - Retrieve all stored notes from the contract
-- `delete_note()` - Remove a specific note by its ID
+## Build Contract
 
----
+stellar contract build
 
-**Stellar Notes DApp** - Securing Your Thoughts on the Blockchain
+## Deploy Contract
+
+stellar contract deploy --source-account diazcahya05
+
+## Contract ID
+
+CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L
+
+## Initialize Contract
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- initialize --admin diazcahya05 --collection_name "Stellar Apes" --collection_symbol "SAPE" --collection_desc "NFT Collection di Soroban Testnet" --max_supply 100 --royalty_bps 250 --royalty_receiver diazcahya05
+
+## Cek Collection Info
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- collection_info
+
+## Mint NFT
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- mint --to diazcahya05 --name "Ape #1" --description "NFT pertama saya di Soroban" --uri "QmApe1"
+
+## Cek NFT
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- get_nft --token_id 0
+
+## Cek Owner NFT
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- owner_of --token_id 0
+
+## Transfer NFT
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- transfer --from diazcahya05 --to ADDRESS_TUJUAN --token_id 0
+
+## Burn NFT
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- burn --owner diazcahya05 --token_id 0
+
+## Total Supply
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- total_supply
+
+## Total Minted
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- total_minted
+
+## Aktifkan Whitelist
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- toggle_whitelist --enabled true
+
+## Tambah Address ke Whitelist
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- add_to_whitelist --address ADDRESS_WALLET
+
+## Cek Whitelist
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- is_whitelisted --address ADDRESS_WALLET
+
+## Pause Contract
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- pause
+
+## Unpause Contract
+
+stellar contract invoke --id CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L --source-account diazcahya05 --network testnet -- unpause
+
+## Test Build
+
+stellar contract build
+
+## Test Deploy
+
+stellar contract deploy --source-account diazcahya05
+
+## Link Contract
+
+https://lab.stellar.org/r/testnet/contract/CANIKMRK7XIB7IQF5TQOSQJ2NWEUT7PU3R75OS4MIHTLZAITGMP44Z4L
+
+## License
+
+MIT
